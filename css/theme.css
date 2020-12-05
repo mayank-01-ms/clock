@@ -1,0 +1,26 @@
+:root {
+  --background: #fff;
+  --foreground: #fff;
+  --navbg: #eee;
+  --clockbg: #fff;
+  --textH: rgba(0, 0, 0, 0.87);
+  --textM: rgba(0, 0, 0, 0.65);
+  --border: rgba(153, 153, 153, 0.4);
+  --bshadow: rgba(0, 0, 0, 0.1);
+  --toggleBg: #eee;
+  --toggleBga: #18c3f8;
+}
+
+.dark {
+  --background: #111111;
+  --foreground: #272727;
+  --navbg: #111111;
+  --clockbg: #333;
+  --textH: rgba(255, 255, 255, 0.87);
+  --textM: rgba(255, 255, 255, 0.65);
+  --border: #333;
+  --bshadow: rgba(0, 0, 0, 0);
+  --toggleBg: #333;
+  --toggleBga: #0f0;
+}
+/*# sourceMappingURL=theme.css.map */

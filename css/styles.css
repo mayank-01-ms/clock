@@ -1,1 +1,288 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
 
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: var(--background);
+  color: var(--txtH);
+}
+
+.wrapper .content {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: var(--textH);
+}
+
+.wrapper .content #clock {
+  margin-top: 45px;
+}
+
+.wrapper .content #clock .time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .content #clock .time #hours,
+.wrapper .content #clock .time #minutes {
+  font-size: 3.2rem;
+}
+
+.wrapper .content #clock .time #hours {
+  position: relative;
+}
+
+.wrapper .content #clock .time #hours:after {
+  content: ':';
+  position: relative;
+  right: 0;
+  -webkit-animation: blink 1s linear infinite;
+          animation: blink 1s linear infinite;
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.wrapper .content #clock .time #tff {
+  color: var(--txtM);
+}
+
+.wrapper .content #clock #date {
+  text-align: center;
+  color: var(--textM);
+  font-size: 0.9rem;
+}
+
+.wrapper .content #clock .analog-clock {
+  margin-top: 50px;
+  height: 12rem;
+  width: 12rem;
+  background: var(--clockbg);
+  border-radius: 50%;
+  position: relative;
+  -webkit-box-shadow: 0px 10px 30px var(--bshadow);
+          box-shadow: 0px 10px 30px var(--bshadow);
+}
+
+.wrapper .content #clock .analog-clock::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #848484;
+  z-index: 3;
+}
+
+.wrapper .content #clock .analog-clock #hour-hand {
+  position: absolute;
+  top: 2.93rem;
+  left: 5.88rem;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  height: 50px;
+  width: 4px;
+  border-radius: 8px;
+  background: #ff105e;
+}
+
+.wrapper .content #clock .analog-clock #minute-hand {
+  position: absolute;
+  top: 2.3rem;
+  left: 5.88rem;
+  -webkit-transform: translate(-19%, -50%);
+          transform: translate(-19%, -50%);
+  height: 60px;
+  width: 3px;
+  border-radius: 6px;
+  background: #18c3f8;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  z-index: 1;
+}
+
+.wrapper .content #clock .analog-clock #second-hand {
+  position: absolute;
+  top: 1.68rem;
+  left: 5.95rem;
+  -webkit-transform: translate(-14%, -50%);
+          transform: translate(-14%, -50%);
+  height: 70px;
+  width: 2px;
+  border-radius: 4px;
+  background: #d6d6d6;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  z-index: 2;
+}
+
+.wrapper footer {
+  position: fixed;
+  bottom: 5vw;
+  color: var(--textH);
+}
+
+.wrapper footer nav ul {
+  width: calc(100vw - 20px);
+  margin: 0 10px;
+  background: var(--foreground);
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 6px 18px var(--bshadow);
+          box-shadow: 0px 6px 18px var(--bshadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper footer nav ul li {
+  list-style: none;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.wrapper footer nav ul li .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5px 0;
+}
+
+.wrapper footer nav ul li .icon img {
+  height: 35px;
+  width: 35px;
+}
+
+.wrapper footer nav ul li h5 {
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: center;
+  font-size: 0.7rem;
+}
+
+.settings {
+  background: var(--background);
+  color: var(--textH);
+  min-height: 100vh;
+  -webkit-transition: 0.75s ease-out;
+  transition: 0.75s ease-out;
+}
+
+.settings header {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.settings .settings-content .block {
+  background: var(--foreground);
+  -webkit-box-shadow: 0px 0px 6px var(--bshadow);
+          box-shadow: 0px 0px 6px var(--bshadow);
+  border-radius: 15px;
+  margin: 1rem 0.4rem;
+  padding: 1rem;
+}
+
+.settings .settings-content .block p {
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings .settings-content .block .block-options {
+  margin-top: 0.5rem;
+}
+
+.settings .settings-content .block .block-options .label {
+  font-size: 0.85rem;
+  color: var(--textH);
+  cursor: pointer;
+}
+
+.settings .settings-content .block .block-options input {
+  display: none;
+}
+
+.settings .settings-content .block .block-options .toggle {
+  cursor: pointer;
+  height: 23px;
+  width: 45px;
+  border-radius: 23px;
+  background: var(--toggleBg);
+  position: absolute;
+  right: 1rem;
+}
+
+.settings .settings-content .block .block-options .toggle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--toggleBg);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.settings .settings-content .block .block-options input:checked + .toggle {
+  background: var(--toggleBga);
+}
+
+.settings .settings-content .block .block-options input:checked + .toggle::after {
+  left: 23px;
+  border: 2px solid var(--toggleBga);
+}
+/*# sourceMappingURL=styles.css.map */
