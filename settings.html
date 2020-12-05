@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="images/settings.png" type="image/png">
+    <title>Settings</title>
+</head>
+<body>
+    <div class="wrapper settings">
+        <header>
+            <h3>Settings</h3>
+        </header>
+        <div class="settings-content">
+            <div class="block">
+                <p>General</p>
+                <div class="block-options">
+                    <label for="themeToggle" class="label">
+                        Dark Theme
+                    </label>
+                    <input type="checkbox" id="themeToggle">
+                    <label for="themeToggle" class="toggle"></label>
+                </div>
+            </div>
+            <div class="block">
+                <p>Clock</p>
+                <div class="block-options">
+                    <label for="timeToggle" class="label">
+                        24 hour format
+                    </label>
+                    <input type="checkbox" id="timeToggle">
+                    <label for="timeToggle" class="toggle"></label>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <nav>
+                <ul>
+                    <li class="active">
+                        <div class="icon">
+                            <a href="index.html">
+                                <img src="images/clock.png" alt="">
+                            </a>
+                        </div>
+                        <h5>Clock</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="images/weather.png" alt="">
+                        </div>
+                        <h5>Weather</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <a href="settings.html">
+                                <img src="images/settings.png" alt="">
+                            </a>
+                        </div>
+                        <h5>Settings</h5>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+</body>
+<script src="js/theme.js"></script>
+<script>
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("change", () => {
+        if (toggle.checked === true) {         
+            localStorage.setItem("darkMode", "dark");
+            body.classList.remove("light");
+            body.classList.add("dark");
+            metaTheme.setAttribute("content", "#111111");
+        } else {
+            localStorage.setItem("darkMode", "light");
+            body.classList.remove("dark");
+            body.classList.add("light");
+            metaTheme.setAttribute("content", "#fff");
+        }
+    });
+    if (darkMode == "dark")
+        toggle.checked = true;
+</script>
+</html>

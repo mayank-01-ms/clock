@@ -1,20 +1,71 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
 
-  <title>Clock</title>
-  <meta name="description" content="Clock app">
-  <meta name="author" content="Mayank">
-<style>
-body{
-font-size: 5em;
-}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <meta name="description" content="Clock" />
+    <meta name="keywords" content="clock, javascript, Mayank Singh, portfolio, student, web developer, programmer, tech at glance, nexus, moderator, UI/UX designer" />
+    <meta property="og:title" content="Clock" />
+    <meta property="og:description" content="Clock app made using vanilla javascript" />
+    <meta name="og:image" content="https://mayank-01-ms.github.io/images/clock.png" />
+    <meta property="og:type" content="web application" />
+    <meta property="og:url" content="https://mayank-01-ms.github.io/clock">
+    <meta name="og:site_name" content="Mayank Singh" />
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="images/clock.png" type="image/png">
+    <title>Clock App</title>
 </head>
 
 <body>
-  Coming soon
+    <div class="wrapper">
+        <section class="content">
+            <section id="clock">
+                <div class="time">
+                    <div id="hours"></div>
+                    <div id="minutes"></div>
+                    <div id="tff"></div>
+                </div>
+                <div id="date"></div>
+                <div class="analog-clock">
+                    <div id="hour-hand"></div>
+                    <div id="minute-hand"></div>
+                    <div id="second-hand"></div>
+                </div>
+            </section>
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li class="active">
+                        <div class="icon">
+                            <img src="images/clock.png" alt="">
+                        </div>
+                        <h5>Clock</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="images/weather.png" alt="">
+                        </div>
+                        <h5>Weather</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <a href="settings.html">
+                                <img src="images/settings.png" alt="">
+                            </a>
+                        </div>
+                        <h5>Settings</h5>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+
 </body>
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
 </html>
