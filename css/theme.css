@@ -5,10 +5,12 @@
   --clockbg: #fff;
   --textH: rgba(0, 0, 0, 0.87);
   --textM: rgba(0, 0, 0, 0.65);
-  --border: rgba(153, 153, 153, 0.4);
+  --textL: rgba(0, 0, 0, 0.35);
+  --border: rgba(153, 153, 153, 0.2);
   --bshadow: rgba(0, 0, 0, 0.1);
   --toggleBg: #eee;
   --toggleBga: #18c3f8;
+  --active: #5e96f0;
 }
 
 .dark {
@@ -18,9 +20,15 @@
   --clockbg: #333;
   --textH: rgba(255, 255, 255, 0.87);
   --textM: rgba(255, 255, 255, 0.65);
-  --border: #333;
+  --textL: rgba(255, 255, 255, 0.35);
+  --border: #444;
   --bshadow: rgba(0, 0, 0, 0);
-  --toggleBg: #333;
+  --toggleBg: #777;
   --toggleBga: #0f0;
+}
+
+.dark .invert {
+  -webkit-filter: invert(1);
+          filter: invert(1);
 }
 /*# sourceMappingURL=theme.css.map */
