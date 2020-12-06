@@ -35,8 +35,7 @@
                     <label for="timeToggle" class="toggle"></label>
                 </div>
             </div>
-        </div>
-        
+        </div>        
         <footer>
             <nav>
                 <ul>
@@ -50,7 +49,9 @@
                     </li>
                     <li>
                         <div class="icon">
-                            <img src="images/weather.png" alt="">
+                            <a href="weather.html">
+                                <img src="images/weather.png" alt="">
+                            </a>
                         </div>
                         <h5>Weather</h5>
                     </li>
@@ -69,9 +70,11 @@
 </body>
 <script src="js/theme.js"></script>
 <script>
-    const toggle = document.getElementById("themeToggle");
-    toggle.addEventListener("change", () => {
-        if (toggle.checked === true) {         
+    let timeFormat = localStorage.getItem("timeFormat");
+    
+    const dmToggle = document.getElementById("themeToggle");
+    dmToggle.addEventListener("change", () => {
+        if (dmToggle.checked === true) {         
             localStorage.setItem("darkMode", "dark");
             body.classList.remove("light");
             body.classList.add("dark");
@@ -84,6 +87,18 @@
         }
     });
     if (darkMode == "dark")
-        toggle.checked = true;
+        dmToggle.checked = true;
+
+    const tfToggle = document.getElementById("timeToggle");
+    tfToggle.addEventListener("change", () => {
+        if(tfToggle.checked === true){
+            localStorage.setItem("timeFormat", "twentyFour");
+        } else{
+            localStorage.setItem("timeFormat", "twelve");
+        }
+    });
+    if (timeFormat == "twentyFour")
+        tfToggle.checked = true;
+    
 </script>
 </html>

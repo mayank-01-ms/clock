@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="images/weather.png" type="image/png">
+    <title>Weather</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <section id="background"></section>
+        <section id="weather">
+            <div class="weather-card">                
+                <div class="weather-status">
+                    <div id="current-temperature">
+                        24 <sup>o</sup>
+                        <span id="units">C</span>
+                    </div>
+                    <div id="location">
+                        Haldwani,
+                        <span class="date">5 Dec</span>
+                    </div>
+                    <div id="status">Cloudy</div>
+                </div>
+                <div class="weather-icon">
+                    <img src="images/sun.png">
+                </div>
+            </div>
+
+            <div class="future-forecast">
+                <div class="fc-day">
+                    <div class="fc-date active">Today</div>
+                    <div class="fc-weather">
+                        <div class="fc-icon">
+                            <img src="images/clouds.png" alt="Cloudy">
+                        </div>
+                        <div class="fc-minmax">27 / 12</div>
+                    </div>
+                </div>
+                <div class="fc-day">
+                    <div class="fc-date">Tomorrow</div>
+                    <div class="fc-weather">
+                        <div class="fc-icon">
+                            <img src="images/rain.png" alt="Rainy">
+                        </div>
+                        <div class="fc-minmax">28 / 16</div>
+                    </div>
+                </div>
+                <div class="fc-day">
+                    <div class="fc-date">6 December</div>
+                    <div class="fc-weather">
+                        <div class="fc-icon">
+                            <img src="images/sun.png" alt="Cloudy">
+                        </div>
+                        <div class="fc-minmax">26 / 14</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-details">
+                <h4>Other Details</h4>
+                <div class="d-row">
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Wind Speed</p>
+                            <p>
+                                5.1 km/h
+                                <span class="wind-speed-logo">
+                                    <img src="images/east.png" alt="Wind direction" class="invert">
+                                </span>
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/wind.png" alt="wind" class="invert">
+                        </div>
+                    </div>
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Feels Like</p>
+                            <p>
+                                16 <sup>o</sup>
+                                <span id="units">C</span>
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/thermometer.png" alt="feels like" class="invert">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-row">
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Pressure</p>
+                            <p>
+                                1000 Pa
+                            </p>
+                        </div>
+                        <div class="d-icon"></div>
+                    </div>
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>UV Index</p>
+                            <p>
+                                1.1
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/sun (1).png" alt="UV Index" class="invert">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <nav>
+                <ul>
+                    <li class="active">
+                        <div class="icon">
+                            <img src="images/clock.png" alt="">
+                        </div>
+                        <h5>Clock</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="images/weather.png" alt="">
+                        </div>
+                        <h5>Weather</h5>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <a href="settings.html">
+                                <img src="images/settings.png" alt="">
+                            </a>
+                        </div>
+                        <h5>Settings</h5>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+        <div class="spcs"></div>
+    </div>
+</body>
+<script src="js/theme.js"></script>
+<script >
+    const windSpeedLogo = document.querySelector(".wind-speed-logo");
+    windSpeedLogo.style.transform = "rotate(210deg)";
+</script>
+
+</html>
