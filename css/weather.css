@@ -1,0 +1,125 @@
+#background {
+  background: var(--clearDay);
+}
+
+#background .twinkle,
+#background .snow {
+  display: inline-block;
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+#background .twinkle {
+  -webkit-animation: twinkle 2s linear infinite;
+          animation: twinkle 2s linear infinite;
+}
+
+#background .snow {
+  background: snow;
+  -webkit-animation: snowfall 2s linear infinite;
+          animation: snowfall 2s linear infinite;
+}
+
+@-webkit-keyframes twinkle {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@-webkit-keyframes snowfall {
+  0% {
+    margin-left: -100px;
+    margin-top: 10px;
+  }
+  100% {
+    margin-top: 110vw;
+  }
+}
+
+@keyframes snowfall {
+  0% {
+    margin-left: -100px;
+    margin-top: 10px;
+  }
+  100% {
+    margin-top: 110vw;
+  }
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100vh;
+  overflow: scroll;
+  background: transparent;
+}
+
+.wrapper .clear {
+  background: var(--clearDay);
+}
+
+.wrapper #weather .weather-card .weather-icon .sun {
+  background: yellow;
+  border-radius: 50%;
+  height: 7rem;
+  width: 7rem;
+  position: relative;
+  opacity: 0.9;
+}
+
+@-webkit-keyframes sunflare {
+  0%, 100% {
+    top: -10%;
+    left: -10%;
+    height: 120%;
+    width: 120%;
+  }
+  50% {
+    top: -40%;
+    left: -40%;
+    height: 180%;
+    width: 180%;
+    opacity: 0.1;
+  }
+}
+
+@keyframes sunflare {
+  0%, 100% {
+    top: -10%;
+    left: -10%;
+    height: 120%;
+    width: 120%;
+  }
+  50% {
+    top: -40%;
+    left: -40%;
+    height: 180%;
+    width: 180%;
+    opacity: 0.1;
+  }
+}
+
+.wrapper footer nav ul {
+  background: var(--clearDayFooter);
+}
+
+.spcs {
+  background: #5896fd;
+}
+/*# sourceMappingURL=weather.css.map */
