@@ -25,14 +25,15 @@ let initiater = () => {
     if (timeFormat == "twelve"){
         tfArea.innerHTML = hours > 12 ? "pm" : "am";
         hours = hours > 12 ? hours - 12 : hours;
+        if (hours == 0)
+            hours = 12;
     }
     hoursArea.innerHTML = hours;
     minutesArea.innerHTML = minutes;
     dateArea.innerHTML = date.toDateString();
-    
 
     hours = hours > 12 ? hours - 12 : hours;
-    hourHand.style.transform = `rotate(${(hours*30)+(minutes/12)}deg)`;
+    hourHand.style.transform = `rotate(${(hours*30)+(minutes/2)}deg)`;
     minuteHand.style.transform = `rotate(${minutes*6}deg)`;
     secondHand.style.transform = `rotate(${seconds*6}deg)`;
 }
