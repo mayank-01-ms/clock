@@ -7,19 +7,23 @@
     <meta name="theme-color" content="#fff">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/weather.css">
     <link rel="shortcut icon" href="images/weather.png" type="image/png">
     <title>Weather</title>
 </head>
 
 <body>
+    <section id="background" class="clear day"></section>
     <div class="wrapper">
-        <section id="background"></section>
         <section id="weather">
             <div class="weather-card">                
                 <div class="weather-status">
                     <div id="current-temperature">
-                        24 <sup>o</sup>
-                        <span id="units">C</span>
+                        24 
+                        <sup>
+                            o
+                            <span id="units">C</span>
+                        </sup>
                     </div>
                     <div id="location">
                         Haldwani,
@@ -28,7 +32,7 @@
                     <div id="status">Cloudy</div>
                 </div>
                 <div class="weather-icon">
-                    <img src="images/sun.png">
+                    <div class="sun"></div>
                 </div>
             </div>
 
@@ -62,8 +66,8 @@
                 </div>
             </div>
 
-            <div class="other-details">
-                <h4>Other Details</h4>
+            <div class="current-details">
+                <h4>Current Details</h4>
                 <div class="d-row">
                     <div class="o-detail">
                         <div class="d-info">
@@ -95,9 +99,9 @@
                 <div class="d-row">
                     <div class="o-detail">
                         <div class="d-info">
-                            <p>Pressure</p>
+                            <p>Humidity</p>
                             <p>
-                                1000 Pa
+                                81%
                             </p>
                         </div>
                         <div class="d-icon"></div>
@@ -115,13 +119,67 @@
                     </div>
                 </div>
             </div>
+
+            <div class="current-details" style="margin-bottom: 200px;">
+                <h4>Other Details</h4>
+                <div class="d-row">
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Sunrise</p>
+                            <p>
+                                7:20 am
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/sunrise.png" alt="wind" class="invert">
+                        </div>
+                    </div>
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Sunset/p>
+                            <p>
+                                5:43 pm
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/sunset.png" alt="feels like" class="invert">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-row">
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Pressure</p>
+                            <p>
+                                1000 Pa
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/barometer.png" alt="Pressure" class="invert">
+                        </div>
+                    </div>
+                    <div class="o-detail">
+                        <div class="d-info">
+                            <p>Visibility</p>
+                            <p>
+                                14 KM
+                            </p>
+                        </div>
+                        <div class="d-icon">
+                            <img src="images/sun (1).png" alt="UV Index" class="invert">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <footer>
             <nav>
                 <ul>
                     <li class="active">
                         <div class="icon">
-                            <img src="images/clock.png" alt="">
+                            <a href="index.html">
+                                <img src="images/clock.png" alt="">
+                            </a>
                         </div>
                         <h5>Clock</h5>
                     </li>
@@ -142,13 +200,45 @@
                 </ul>
             </nav>
         </footer>
-        <div class="spcs"></div>
     </div>
 </body>
 <script src="js/theme.js"></script>
 <script >
     const windSpeedLogo = document.querySelector(".wind-speed-logo");
     windSpeedLogo.style.transform = "rotate(210deg)";
+    console.log(document.querySelector(".d-row"))
+
+
+    metaTheme.setAttribute("content", "#5896fd");
+
+    const background = document.getElementById("background");
+
+
+    let createStars = () => {            
+        for (let i = 0; i < 50; i++){
+            let stars = document.createElement("span");
+            stars.classList.add("twinkle");
+            stars.style.top = Math.random() * 100 + 'vh';
+            stars.style.left = Math.random() * 100 + 'vw';
+            stars.style.height = stars.style.width = 3 + Math.random() * 5 + 'px';
+            stars.style.animationDelay = 1 + Math.random() * 4 + 's';
+            background.append(stars);
+        }
+    }
+
+    let createSnow = () => {            
+        for (let i = 0; i < 50; i++){
+            let snow = document.createElement("span");
+            snow.classList.add("snow");
+            snow.style.top = Math.random() * 100 + 'vh';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.height = snow.style.width = 5 + Math.random() * 10 + 'px';
+            snow.style.animationDuration = 1 + Math.random() * 4 + 's';
+            background.append(snow);
+        }
+    }
+
+    // createSnow();
 </script>
 
 </html>
