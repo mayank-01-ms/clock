@@ -213,7 +213,8 @@ $icon-width: 35px;
             
             p{
                 text-transform: uppercase;
-                font-size: 0.95rem;
+                font-size: 0.85rem;
+                color: var(--textM);
                 border-bottom: 1px solid var(--border);
                 padding-bottom: 0.5rem;
             }
@@ -221,9 +222,9 @@ $icon-width: 35px;
                 margin-top: 1rem;
                 
                 .label{
-                    font-size: 0.85rem;
+                    font-size: 0.9rem;
                     cursor: pointer;
-                    color: var(--textM);
+                    color: var(--textH);
                 }
                 input{
                     display: none;
@@ -247,7 +248,7 @@ $icon-width: 35px;
 }
 
 #background{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     position: relative;
 }
@@ -267,46 +268,35 @@ $icon-width: 35px;
     }
     .future-forecast,
     .current-details{
-        // border: 1px solid var(--wborder);
         position: relative;
-
-        &::before{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            border-radius: 15px;
-            filter: blur(1px);
-            background: rgba($color: #fff, $alpha: 0.1);
-        }
+        backdrop-filter: blur(40px);
+        background-color: rgba($color: #fff, $alpha: 0.15);
+        border: 1px solid rgba($color: #fff, $alpha: 0.09);
     }
 
     .weather-card{
         background: transparent;
-        margin-top: 1rem;
+        margin-top: -1rem;
+        padding-top: 1rem;
         display: flex;
         justify-content: space-between;
 
         .weather-status{
             #current-temperature{
                 font-size: 4.5rem;
-                font-weight: 300;
+                font-weight: 100;
+                position: relative;
+                left: -0.5rem;
+
                 sup{
                     font-size: 0.9rem;
                     position: relative;
                     top: -1rem;
+                    left: -1rem;
                 }
             }
             #status{
                 color: var(--textM);
-            }
-        }
-        .weather-icon{
-            img{
-                height: 6rem;
-                width: 6rem;
             }
         }
     }
@@ -317,7 +307,6 @@ $icon-width: 35px;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0.5rem;
-            color: var(--textM);
 
             &:not(:last-child){
                 border-bottom: 1px solid var(--wborder);
@@ -345,12 +334,11 @@ $icon-width: 35px;
         .d-row{
             width: 100%;
             display: flex;
-            
-            border-bottom: 1px solid var(--wborder);
-            &:first-child{
-                background: red;
+
+            &:not(:last-child){
+                border-bottom: 1px solid var(--wborder);
             }
-            
+
             .o-detail{
                 width: 100%;
                 padding: 1rem 0.5rem;
@@ -364,11 +352,10 @@ $icon-width: 35px;
                 .d-info{
                     p{
                         &:first-child{
-                            color: var(--textL);
+                            color: var(--textM);
                             font-size: 0.85rem;
                         }
                         &:nth-child(2){
-                            color: var(--textM);
                             font-size: 0.9rem;
                         }
                     }

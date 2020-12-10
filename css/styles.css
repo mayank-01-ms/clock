@@ -244,7 +244,8 @@
 
 .settings .settings-content .block p {
   text-transform: uppercase;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
+  color: var(--textM);
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
 }
@@ -254,9 +255,9 @@
 }
 
 .settings .settings-content .block .block-options .label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  color: var(--textM);
+  color: var(--textH);
 }
 
 .settings .settings-content .block .block-options input {
@@ -296,7 +297,7 @@
 }
 
 #background {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   position: relative;
 }
@@ -318,25 +319,16 @@
 #weather .future-forecast,
 #weather .current-details {
   position: relative;
-}
-
-#weather .future-forecast::before,
-#weather .current-details::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 15px;
-  -webkit-filter: blur(1px);
-          filter: blur(1px);
-  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
 #weather .weather-card {
   background: transparent;
-  margin-top: 1rem;
+  margin-top: -1rem;
+  padding-top: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -347,22 +339,20 @@
 
 #weather .weather-card .weather-status #current-temperature {
   font-size: 4.5rem;
-  font-weight: 300;
+  font-weight: 100;
+  position: relative;
+  left: -0.5rem;
 }
 
 #weather .weather-card .weather-status #current-temperature sup {
   font-size: 0.9rem;
   position: relative;
   top: -1rem;
+  left: -1rem;
 }
 
 #weather .weather-card .weather-status #status {
   color: var(--textM);
-}
-
-#weather .weather-card .weather-icon img {
-  height: 6rem;
-  width: 6rem;
 }
 
 #weather .future-forecast {
@@ -380,7 +370,6 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 1rem 0.5rem;
-  color: var(--textM);
 }
 
 #weather .future-forecast .fc-day:not(:last-child) {
@@ -413,11 +402,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid var(--wborder);
 }
 
-#weather .current-details .d-row:first-child {
-  background: red;
+#weather .current-details .d-row:not(:last-child) {
+  border-bottom: 1px solid var(--wborder);
 }
 
 #weather .current-details .d-row .o-detail {
@@ -436,12 +424,11 @@
 }
 
 #weather .current-details .d-row .o-detail .d-info p:first-child {
-  color: var(--textL);
+  color: var(--textM);
   font-size: 0.85rem;
 }
 
 #weather .current-details .d-row .o-detail .d-info p:nth-child(2) {
-  color: var(--textM);
   font-size: 0.9rem;
 }
 
