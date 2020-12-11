@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/weather.css">
     <link rel="shortcut icon" href="images/weather.png" type="image/png">
+    <link rel="manifest" href="app.webmanifest">
     <title>Weather</title>
 </head>
 
-<body>
+<body class="dark">
     <div class="wrapper">
         <section id="background" class="">
             <section id="weather">
@@ -29,7 +30,7 @@
                             Haldwani,
                             <span id="date"></span>
                         </div>
-                        <div id="status">Clear</div>
+                        <div id="status"></div>
                     </div>
                     <div class="weather-icon">
                     </div>
@@ -54,7 +55,7 @@
                         </div>
                     </div>
                     <div class="fc-day">
-                        <div class="fc-date">6 December</div>
+                        <div class="fc-date" id="third-day-date"></div>
                         <div class="fc-weather">
                             <div class="fc-icon">
                                 <img src="images/sun.png" alt="Cloudy">
@@ -200,18 +201,34 @@
         </footer>
     </div>
 </body>
-<script src="js/theme.js"></script>
 <script >
+    
+    const metaTheme = document.querySelector("meta[name = 'theme-color']");
+    const background = document.getElementById("background");
+    const footer = document.querySelector("footer nav ul");
+
+    let date = new Date();
+
+    let addDays = (date, days) => {
+        let result = date;
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+ 
+    const temperatureArea = document.getElementById("current-temperature");
+    
+    const dateArea = document.getElementById("date");
+    dateArea.innerHTML = date.toLocaleDateString();
+
+    const status = document.getElementById("status");
+    status.innerHTML = "Clear";
+    
+    const thirdDay = document.getElementById("third-day-date");
+    thirdDay.innerHTML = addDays(date, 3).toLocaleDateString();
+
     const windSpeedLogo = document.querySelector(".wind-speed-logo");
     const weatherIcon = document.querySelector(".weather-icon");
     windSpeedLogo.style.transform = "rotate(210deg)";
-
-    const footer = document.querySelector("footer nav ul");
-
-    const dateArea = document.getElementById("date");
-    dateArea.innerHTML = new Date().toLocaleDateString();
-
-    const background = document.getElementById("background");
 
     let createStars = () => {            
         for (let i = 0; i < 80; i++){
@@ -280,11 +297,6 @@
         }
     }
 
-    // createClouds();
-    // createRain()
-    // createFog()
-    // createStars()
-
     let snowWeather = () => {
         createSnow();
         background.classList.add('snow');
@@ -301,12 +313,10 @@
         sun.classList.add("sun");
         weatherIcon.append(sun);
 
-        let hours = new Date().getHours();
-
         footer.style.background = "#5896fd";
-        metaTheme.setAttribute("content", "#586fd");
+        metaTheme.setAttribute("content", "#5896fd");
 
-        if (hours > 19){
+        if (date.getHours() >= 19){
             background.classList.add('night');
             createStars();
             footer.style.background = "#021a48";
@@ -316,6 +326,12 @@
             moon.classList.add("moon");
             weatherIcon.append(moon);
         }
+    }
+
+    let createThunder = () => {
+        let thunder = document.createElement('div');
+        thunder.classList.add('thunder');
+        background.append(thunder);
     }
 
     let fogWeather = () => {
@@ -332,6 +348,14 @@
         metaTheme.setAttribute("content", "#616161");
     }
 
+    let thunderWeather = () => {
+        background.classList.add('rainy');
+        createRain();
+        createThunder();
+        footer.style.background = "#9bc5c3";
+        metaTheme.setAttribute("content", "#616161");
+    }
+
     let cloudyWeather = () => {
         background.classList.add('cloudy');
         createClouds();
@@ -343,7 +367,134 @@
     // snowWeather()
     clearWeather()
     // rainWeather()
+    // thunderWeather();
     // cloudyWeather()
+
+
+    let apiResponse =  `               
+
+{
+  "lat": 40.12,
+  "lon": -96.66,
+  "timezone": "America/Chicago",
+  "timezone_offset": -18000,
+  "current": {
+    "dt": 1595243443,
+    "sunrise": 1595243663,
+    "sunset": 1595296278,
+    "temp": 293.28,
+    "feels_like": 293.82,
+    "pressure": 1016,
+    "humidity": 100,
+    "dew_point": 293.28,
+    "uvi": 10.64,
+    "clouds": 90,
+    "visibility": 10000,
+    "wind_speed": 4.6,
+    "wind_deg": 310,
+    "weather": [
+      {
+        "id": 501,
+        "main": "Rain",
+        "description": "moderate rain",
+        "icon": "10n"
+      },
+      {
+        "id": 201,
+        "main": "Thunderstorm",
+        "description": "thunderstorm with rain",
+        "icon": "11n"
+      }
+    ],
+    "rain": {
+      "1h": 2.93
+    }
+  },
+  "minutely": [
+    {
+      "dt": 1595243460,
+      "precipitation": 2.928
+    },
+    ...
+  },
+    "hourly": [
+    {
+      "dt": 1595242800,
+      "temp": 293.28,
+      "feels_like": 293.82,
+      "pressure": 1016,
+      "humidity": 100,
+      "dew_point": 293.28,
+      "clouds": 90,
+      "visibility": 10000,
+      "wind_speed": 4.6,
+      "wind_deg": 123,
+      "weather": [
+        {
+          "id": 501,
+          "main": "Rain",
+          "description": "moderate rain",
+          "icon": "10n"
+        }
+      ],
+      "pop": 0.99,
+      "rain": {
+        "1h": 2.46
+      }
+    },
+    ...
+  }
+"daily": [
+    {
+      "dt": 1595268000,
+      "sunrise": 1595243663,
+      "sunset": 1595296278,
+      "temp": {
+        "day": 298.82,
+        "min": 293.25,
+        "max": 301.9,
+        "night": 293.25,
+        "eve": 299.72,
+        "morn": 293.48
+      },
+      "feels_like": {
+        "day": 300.06,
+        "night": 292.46,
+        "eve": 300.87,
+        "morn": 293.75
+      },
+      "pressure": 1014,
+      "humidity": 82,
+      "dew_point": 295.52,
+      "wind_speed": 5.22,
+      "wind_deg": 146,
+      "weather": [
+        {
+          "id": 502,
+          "main": "Rain",
+          "description": "heavy intensity rain",
+          "icon": "10d"
+        }
+      ],
+      "clouds": 97,
+      "pop": 1,
+      "rain": 12.57,
+      "uvi": 10.64
+    },
+    ...
+    },
+"alerts": [
+    {
+      "sender_name": "NWS Tulsa (Eastern Oklahoma)",
+      "event": "Heat Advisory",
+      "start": 1597341600,
+      "end": 1597366800,
+      "description": "...HEAT ADVISORY REMAINS IN EFFECT FROM 1 PM THIS AFTERNOON TO\n8 PM CDT THIS EVENING...\n* WHAT...Heat index values of 105 to 109 degrees expected.\n* WHERE...Creek, Okfuskee, Okmulgee, McIntosh, Pittsburg,\nLatimer, Pushmataha, and Choctaw Counties.\n* WHEN...From 1 PM to 8 PM CDT Thursday.\n* IMPACTS...The combination of hot temperatures and high\nhumidity will combine to create a dangerous situation in which\nheat illnesses are possible."
+    },
+    ...
+  ]`;
+//   console.log(JSON.parse(apiResponse));
+            
 </script>
 
 </html>
