@@ -1,19 +1,36 @@
-self.addEventListener('install', function(e) {
+const CACHE_NAME = 'weather-v0.01a';
+
+self.addEventListener('install', e => {
     e.waitUntil(
-      caches.open('fox-store').then(function(cache) {
-        return cache.addAll([
-          'index.html',
-          '/js/clock.js'
-        ]);
+      caches.open(CACHE_NAME).then(cache => {
+        cache.addAll([
+          '/clock/offline.html'
+        ]).then(() => self.skipWaiting());
       })
     );
    });
    
-   self.addEventListener('fetch', function(e) {
-     console.log(e.request.url);
-     e.respondWith(
-       caches.match(e.request).then(function(response) {
-         return response || fetch(e.request);
-       })
-     );
-   });
+self.addEventListener('fetch', e => {
+  if (e.request.mode === 'navigate'){
+    e.respondWith(
+      fetch(e.request.url)
+      .catch( _ => {
+        return caches.match('offline.html');
+      })
+    )
+  }
+});
+
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (CACHE_NAME !== cacheName) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});

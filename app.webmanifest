@@ -1,7 +1,7 @@
 {
-    "background_color": "purple",
-    "description": "Shows random fox pictures. Hey, at least it isn't cats.",
-    "display": "fullscreen",
+    "background_color": "#5896f0",
+    "description": "Dynamic weather application with animated previews",
+    "display": "standalone",
     "icons": [
       {
         "src": "images/weather.png",
@@ -11,5 +11,5 @@
     ],
     "name": "Weather",
     "short_name": "Weather",
-    "start_url": "/index.html"
+    "start_url": "/clock/weather.html"
   }
