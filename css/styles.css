@@ -302,7 +302,7 @@
   position: relative;
 }
 
-#weather #location {
+#weather .location {
   color: var(--textM);
 }
 
@@ -337,18 +337,11 @@
           justify-content: space-between;
 }
 
-#weather .weather-card .weather-status #current-temperature {
+#weather .weather-card .weather-status .curr-stats {
   font-size: 4.5rem;
   font-weight: 100;
   position: relative;
   left: -0.5rem;
-}
-
-#weather .weather-card .weather-status #current-temperature sup {
-  font-size: 0.9rem;
-  position: relative;
-  top: -1rem;
-  left: -1rem;
 }
 
 #weather .weather-card .weather-status #status {
@@ -434,8 +427,7 @@
 
 #weather .current-details .d-row .o-detail .d-info .wind-speed-logo {
   display: inline-block;
-  width: 0.8rem;
-  margin-left: 0.5rem;
+  width: 0.7rem;
 }
 
 #weather .current-details .d-row .o-detail .d-info .wind-speed-logo img {
@@ -451,7 +443,9 @@
   max-width: 100%;
 }
 
-.spcs {
-  height: 400px;
+@media only screen and (min-width: 768px) {
+  body {
+    max-width: 700px !important;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -252,8 +252,9 @@ $icon-width: 35px;
     width: 100vw;
     position: relative;
 }
+
 #weather{
-    #location{
+    .location{
         color: var(--textM);
     }
 
@@ -282,18 +283,11 @@ $icon-width: 35px;
         justify-content: space-between;
 
         .weather-status{
-            #current-temperature{
+            .curr-stats{
                 font-size: 4.5rem;
                 font-weight: 100;
                 position: relative;
                 left: -0.5rem;
-
-                sup{
-                    font-size: 0.9rem;
-                    position: relative;
-                    top: -1rem;
-                    left: -1rem;
-                }
             }
             #status{
                 color: var(--textM);
@@ -361,8 +355,7 @@ $icon-width: 35px;
                     }
                     .wind-speed-logo{
                         display: inline-block;
-                        width: 0.8rem;
-                        margin-left: 0.5rem;
+                        width: 0.7rem;
                         img{
                             max-width: 100%;
                         }
@@ -381,6 +374,9 @@ $icon-width: 35px;
     }
 }
 
-.spcs{
-    height: 400px;
+//not working
+@media only screen and (min-width: 768px){
+    body{
+        max-width: 700px !important;
+    }
 }

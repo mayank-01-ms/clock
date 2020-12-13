@@ -330,6 +330,91 @@
   background: transparent;
 }
 
+.wrapper #welcome {
+  width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(315deg, #3F5EFB, #FC466B);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 7rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+
+.wrapper #welcome .welcome-msg {
+  height: 250px;
+  padding: 0 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: 40px;
+          backdrop-filter: 40px;
+  color: white;
+}
+
+.wrapper #welcome .welcome-msg img {
+  max-width: 75px;
+  margin-bottom: 10px;
+}
+
+.wrapper #welcome .welcome-msg p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg form {
+  margin-top: 1rem;
+}
+
+.wrapper #welcome .welcome-msg form input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+  -webkit-transition: 0.3 ease;
+  transition: 0.3 ease;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg form input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg form input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg form input::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg form input::placeholder {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.wrapper #welcome .welcome-msg #err-c-msg {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #fff;
+}
+
 .wrapper #weather .weather-card .weather-icon .sun {
   position: absolute;
   top: -2rem;
