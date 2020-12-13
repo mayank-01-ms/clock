@@ -20,18 +20,28 @@
 <body class="dark">
     <div class="wrapper">
         <section id="background" class="">
+            <section id="welcome">
+                <div class="welcome-msg">
+                    <img src="images/weather.png" alt="logo">                    
+                <h4>
+                    Welcome!
+                </h4>
+                <p>No location access. 
+                <br/>Please Enter your city to continue.</p>
+                <form action="">
+                    <input type="text" placeholder="Enter your city" id="city">
+                </form>
+                <div id="err-c-msg"></div>
+                </div>
+            </section>
             <section id="weather">
                 <div class="weather-card">                
                     <div class="weather-status">
-                        <div id="current-temperature">
-                            <span id="ct"></span>
-                            <sup>
-                                o
-                                <span id="units">C</span>
-                            </sup>
+                        <div class="curr-stats">
+                            <span id="current-temperature"></span>
                         </div>
-                        <div id="location">
-                            Haldwani,
+                        <div class="location">
+                            <span id="location"></span>
                             <span id="date"></span>
                         </div>
                         <div id="status"></div>
@@ -41,30 +51,30 @@
                 </div>
                 <div class="future-forecast">
                     <div class="fc-day">
-                        <div class="fc-date active">Today</div>
+                        <div class="fc-date">Today</div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img src="images/clouds.png" alt="Cloudy">
+                                <img id="fc-fimg">
                             </div>
-                            <div class="fc-minmax">27 / 12</div>
+                            <div class="fc-minmax" id="fc-fday">27 / 12</div>
                         </div>
                     </div>
                     <div class="fc-day">
                         <div class="fc-date">Tomorrow</div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img src="images/rain.png" alt="Rainy">
+                                <img id="fc-simg">
                             </div>
-                            <div class="fc-minmax">28 / 16</div>
+                            <div class="fc-minmax" id="fc-sday">28 / 16</div>
                         </div>
                     </div>
                     <div class="fc-day">
                         <div class="fc-date" id="third-day-date"></div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img src="images/sun.png" alt="Cloudy">
+                                <img id="fc-timg">
                             </div>
-                            <div class="fc-minmax">26 / 14</div>
+                            <div class="fc-minmax" id="dc-tday">26 / 14</div>
                         </div>
                     </div>
                 </div>
@@ -77,7 +87,7 @@
                                 <p>
                                     <span id="wind-speed"></span>
                                     <span class="wind-speed-logo">
-                                        <img src="images/east.png" alt="Wind direction" class="invert">
+                                        <img src="images/wind-direction.png" alt="Wind direction" class="invert">
                                     </span>
                                 </p>
                             </div>
@@ -90,8 +100,6 @@
                                 <p>Feels Like</p>
                                 <p>
                                     <span id="feels-like"></span>
-                                    <sup>o</sup>
-                                    <span id="units">C</span>
                                 </p>
                             </div>
                             <div class="d-icon">
@@ -103,21 +111,19 @@
                         <div class="o-detail">
                             <div class="d-info">
                                 <p>Humidity</p>
-                                <p id="humidity">
-                                    81%
-                                </p>
+                                <p id="humidity"></p>
                             </div>
-                            <div class="d-icon"></div>
+                            <div class="d-icon">
+                                <img src="images/humidity.png" alt="humidity" class="invert">
+                            </div>
                         </div>
                         <div class="o-detail">
                             <div class="d-info">
                                 <p>UV Index</p>
-                                <p id="uv-index">
-                                    1.1
-                                </p>
+                                <p id="uv-index"></p>
                             </div>
                             <div class="d-icon">
-                                <img src="images/sun (1).png" alt="UV Index" class="invert">
+                                <img src="images/uv-index.png" alt="UV Index" class="invert">
                             </div>
                         </div>
                     </div>
@@ -128,9 +134,7 @@
                         <div class="o-detail">
                             <div class="d-info">
                                 <p>Sunrise</p>
-                                <p id="sunrise">
-                                    7:20 am
-                                </p>
+                                <p id="sunrise"></p>
                             </div>
                             <div class="d-icon">
                                 <img src="images/sunrise.png" alt="wind" class="invert">
@@ -138,10 +142,8 @@
                         </div>
                         <div class="o-detail">
                             <div class="d-info">
-                                <p>Sunset/p>
-                                <p id="sunset">
-                                    5:43 pm
-                                </p>
+                                <p>Sunset</p>
+                                <p id="sunset"></p>
                             </div>
                             <div class="d-icon">
                                 <img src="images/sunset.png" alt="feels like" class="invert">
@@ -152,9 +154,7 @@
                         <div class="o-detail">
                             <div class="d-info">
                                 <p>Pressure</p>
-                                <p id="pressure">
-                                    1000 Pa
-                                </p>
+                                <p id="pressure"></p>
                             </div>
                             <div class="d-icon">
                                 <img src="images/barometer.png" alt="Pressure" class="invert">
@@ -163,12 +163,10 @@
                         <div class="o-detail">
                             <div class="d-info">
                                 <p>Visibility</p>
-                                <p id="visibility">
-                                    14
-                                </p>
+                                <p id="visibility"></p>
                             </div>
                             <div class="d-icon">
-                                <img src="images/sun (1).png" alt="UV Index" class="invert">
+                                <img src="images/uv-index.png" alt="UV Index" class="invert">
                             </div>
                         </div>
                     </div>
