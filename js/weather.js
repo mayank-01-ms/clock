@@ -280,7 +280,7 @@ let fetchWeather = (latitude, longitude) => {
     .then(
         response => {
         weatherArea.style.display = 'block';
-        footer.style.display = 'flex';
+        // footer.style.display = 'flex';
             if (response.status !== 200) {
                 console.log('Looks like there was a problem. Status Code: ' + response.status);
                 return;
