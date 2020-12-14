@@ -3,9 +3,21 @@ const background = document.getElementById("background");
 const welcomeScreen = document.getElementById("welcome");
 const weatherArea = document.getElementById("weather");
 const locationArea = document.getElementById("location");
-const footer = document.querySelector("footer nav ul");
 weatherArea.style.display = 'none';
-footer.style.display = 'none';
+
+const hiddenfcArea = document.querySelector('.hidden-fc');
+const expandfcArea = document.querySelector('.expand-fc');
+expandfcArea.addEventListener("click", () => {
+  if (hiddenfcArea.style.display === 'none'){
+    hiddenfcArea.style.display = 'block';
+    expandfcArea.style.borderTop = '1px solid var(--wborder)';
+    expandfcArea.innerHTML = 'Hide rows'
+  }
+  else if (hiddenfcArea.style.display === 'block'){
+    hiddenfcArea.style.display = 'none';
+    expandfcArea.innerHTML = 'Show 4 more rows';
+  }
+})
 
 let date = new Date();
 
@@ -15,12 +27,21 @@ let addDays = (date, days) => {
     return result;
 }
 
-const fdaymm = document.getElementById("fc-fday");
-const sdaymm = document.getElementById("fc-sday");
-const tdaymm = document.getElementById("fc-tday");
-const fcfimg = document.getElementById("fc-fimg");
-const fcsimg = document.getElementById("fc-simg");
-const fctimg = document.getElementById("fc-timg");
+const firstdaymm = document.getElementById("fc-firstday");
+const seconddaymm = document.getElementById("fc-secondday");
+const thirddaymm = document.getElementById("fc-thirdday");
+const fourthdaymm = document.getElementById("fc-fourthday");
+const fifthdaymm = document.getElementById("fc-fifthday");
+const sixthdaymm = document.getElementById("fc-sixthday");
+const seventhdaymm = document.getElementById("fc-seventhday");
+
+const fcfirstimg = document.getElementById("fc-firstimg");
+const fcssecondimg = document.getElementById("fc-secondimg");
+const fcthirdimg = document.getElementById("fc-thirdimg");
+const fcfourthimg = document.getElementById("fc-fourthimg");
+const fcfifthimg = document.getElementById("fc-fifthimg");
+const fcsixthimg = document.getElementById("fc-sixthimg");
+const fcseventhimg = document.getElementById("fc-seventhimg");
 
 const temperatureArea = document.getElementById("current-temperature");
 const windSpeed = document.getElementById("wind-speed");
@@ -32,14 +53,21 @@ const sunset = document.getElementById("sunset");
 const pressure = document.getElementById("pressure");
 const visibility = document.getElementById("visibility");
 
-
 const dateArea = document.getElementById("date");
 dateArea.innerHTML = date.toLocaleDateString();
 
 const status = document.getElementById("status");
 
 const thirdDay = document.getElementById("third-day-date");
-thirdDay.innerHTML = addDays(date, 3).toLocaleDateString();
+const fourthDay = document.getElementById("fourth-day-date");
+const fifthDay = document.getElementById("fifth-day-date");
+const sixthDay = document.getElementById("sixth-day-date");
+const seventhDay = document.getElementById("seventh-day-date");
+thirdDay.innerHTML = addDays(date, 3).toDateString().slice(0, -5);
+fourthDay.innerHTML = addDays(date, 1).toDateString().slice(0, -5);
+fifthDay.innerHTML = addDays(date, 1).toDateString().slice(0, -5);
+sixthDay.innerHTML = addDays(date, 1).toDateString().slice(0, -5);
+seventhDay.innerHTML = addDays(date, 1).toDateString().slice(0, -5);
 
 const windSpeedLogo = document.querySelector(".wind-speed-logo");
 const weatherIcon = document.querySelector(".weather-icon");
@@ -111,29 +139,32 @@ let createFog = () => {
     }
 }
 
+let createThunder = () => {
+    let thunder = document.createElement('div');
+    thunder.classList.add('thunder');
+    background.append(thunder);
+}
+
 let snowWeather = () => {
     createSnow();
     background.classList.add('snow');
     let div = document.createElement('div');
     div.classList.add("snow-flake-icon");
     weatherIcon.append(div);        
-    footer.style.background = "#2395ff";
     metaTheme.setAttribute("content", "#2395ff");
 }
 
-let clearWeather = () => {
+let clearWeather = (time = 'day') => {
     background.classList.add('clear');
     let sun = document.createElement('div');
     sun.classList.add("sun");
     weatherIcon.append(sun);
 
-    footer.style.background = "#5896fd";
     metaTheme.setAttribute("content", "#5896fd");
 
-    if (date.getHours() >= 19){
+    if (time == 'night'){
         background.classList.add('night');
         createStars();
-        footer.style.background = "#021a48";
         metaTheme.setAttribute("content", "#021a48");
         sun.remove();
         let moon = document.createElement('div');
@@ -142,23 +173,15 @@ let clearWeather = () => {
     }
 }
 
-let createThunder = () => {
-    let thunder = document.createElement('div');
-    thunder.classList.add('thunder');
-    background.append(thunder);
-}
-
 let fogWeather = () => {
     background.classList.add('foggy');
     createFog();
-    footer.style.background = "#333";
     metaTheme.setAttribute("content", "#333");
 }
 
 let rainWeather = () => {
     background.classList.add('rainy');
     createRain();
-    footer.style.background = "#9bc5c3";
     metaTheme.setAttribute("content", "#616161");
 }
 
@@ -166,14 +189,12 @@ let thunderWeather = () => {
     background.classList.add('rainy');
     createRain();
     createThunder();
-    footer.style.background = "#9bc5c3";
     metaTheme.setAttribute("content", "#616161");
 }
 
 let cloudyWeather = () => {
     background.classList.add('cloudy');
     createClouds();
-    footer.style.background = "#d6a4a4";
     metaTheme.setAttribute("content", "#d6a4a4");
 }
 
@@ -182,14 +203,22 @@ let convertTimestamptoTime = unixTimestamp => {
     // convert to milliseconds and then create a new Date object 
     // and return time in 12 hour format
 
-    dateObj = new Date(unixTimestamp * 1000); 
-    utcString = dateObj.toUTCString(); 
+    let dateObj = new Date(unixTimestamp * 1000); 
+    dateObj.toUTCString(); 
     let hours = dateObj.getHours();
     let ampm = hours > 12 ? 'PM' : 'AM';
     hours = hours > 12 ? hours - 12 : hours;
     let minutes = dateObj.getMinutes();
     return hours + ':' + minutes + ' ' + ampm;
 } 
+
+let isdayorNight = (sunrise, sunset) => {
+  let tempDateObj = new Date(sunrise * 1000);
+  let sstempDateObj = new Date(sunset * 1000);
+  if (date.getTime() >= tempDateObj.getTime() && date.getTime() <= sstempDateObj.getTime())
+    return 'day';
+  return 'night';
+}
 
 let getWeatherIcon = description => {
     if (description == 'Fog' || description == 'Mist' || description == 'Smoke' || description == 'Haze'){
@@ -201,7 +230,7 @@ let getWeatherIcon = description => {
         return 'rain.png'
     } else if (description == 'Thunderstorm'){
         return 'thunder.png'
-    } else if (description == 'Clear' || description == 'clear sky'){
+    } else if (description == 'Clear'){
         return 'sun.png';
     }else if (description == 'Clouds'){
         return 'clouds.png';
@@ -215,13 +244,21 @@ let updateWeather = (data) => {
     temperatureArea.innerHTML = Math.round(data.current.temp) + '&deg; C';
     status.innerHTML = data.current.weather[0].main;
 
-    fdaymm.innerHTML = Math.round(data.daily[0].temp.max) + ' / ' + Math.round(data.daily[0].temp.min);
-    fdaymm.innerHTML = Math.round(data.daily[1].temp.max) + ' / ' + Math.round(data.daily[1].temp.min);
-    fdaymm.innerHTML = Math.round(data.daily[2].temp.max) + ' / ' + Math.round(data.daily[2].temp.min);
+    firstdaymm.innerHTML = Math.round(data.daily[0].temp.max) + ' / ' + Math.round(data.daily[0].temp.min);
+    seconddaymm.innerHTML = Math.round(data.daily[1].temp.max) + ' / ' + Math.round(data.daily[1].temp.min);
+    thirddaymm.innerHTML = Math.round(data.daily[2].temp.max) + ' / ' + Math.round(data.daily[2].temp.min);
+    fourthdaymm.innerHTML = Math.round(data.daily[3].temp.max) + ' / ' + Math.round(data.daily[3].temp.min);
+    fifthdaymm.innerHTML = Math.round(data.daily[4].temp.max) + ' / ' + Math.round(data.daily[4].temp.min);
+    sixthdaymm.innerHTML = Math.round(data.daily[5].temp.max) + ' / ' + Math.round(data.daily[5].temp.min);
+    seventhdaymm.innerHTML = Math.round(data.daily[6].temp.max) + ' / ' + Math.round(data.daily[6].temp.min);
 
-    fcfimg.src = 'images/' + getWeatherIcon(data.daily[0].weather[0].description);
-    fcsimg.src = 'images/' + getWeatherIcon(data.daily[1].weather[0].description);
-    fctimg.src = 'images/' + getWeatherIcon(data.daily[2].weather[0].description);
+    fcfirstimg.src = 'images/' + getWeatherIcon(data.daily[0].weather[0].main);
+    fcssecondimg.src = 'images/' + getWeatherIcon(data.daily[1].weather[0].main);
+    fcthirdimg.src = 'images/' + getWeatherIcon(data.daily[2].weather[0].main);
+    fcfourthimg.src = 'images/' + getWeatherIcon(data.daily[3].weather[0].main);
+    fcfifthimg.src = 'images/' + getWeatherIcon(data.daily[4].weather[0].main);
+    fcsixthimg.src = 'images/' + getWeatherIcon(data.daily[5].weather[0].main);
+    fcseventhimg.src = 'images/' + getWeatherIcon(data.daily[6].weather[0].main);
 
     windSpeed.innerHTML = data.current.wind_speed + ' KM/H';
     windSpeedLogo.style.transform = `rotate(${data.current.wind_deg + 90}deg)`;
@@ -244,17 +281,16 @@ let updateWeather = (data) => {
     } else if (mainStatus == 'Thunderstorm'){
         thunderWeather();
     } else if (mainStatus == 'Clear'){
-        clearWeather();
+        clearWeather(isdayorNight(data.current.sunrise, data.current.sunset));
     }else if (mainStatus == 'Clouds'){
         cloudyWeather();
     }
 }
 
-const apiKey = "4d8fb5b93d4af21d66a2948710284366";
+let setCityName = (latitude, longitude) => {
 
-let getCityName = (latitude, longitude) => {
-    
-    let cityUrl = `https://us1.locationiq.com/v1/reverse.php?key=pk.dd84ee8a4b20a86403e581cfa93f58f7&lat=${latitude}&lon=${longitude}+&format=json`;
+    const privateToken = 'pk.dd84ee8a4b20a86403e581cfa93f58f7';  
+    let cityUrl = `https://us1.locationiq.com/v1/reverse.php?key=${privateToken}&lat=${latitude}&lon=${longitude}+&format=json`;
     fetch(cityUrl)
     .then(
         response => {
@@ -267,20 +303,27 @@ let getCityName = (latitude, longitude) => {
                     cityName = data.address.county;
                 if (cityName == undefined)
                     cityName = data.address.state;
-                locationArea.innerHTML = cityName + ', ';
+                
+                let storedCityName = localStorage.getItem('cityName');
+                if (storedCityName == null)
+                  locationArea.innerHTML = cityName + ', ';
+                else if (storedCityName == cityName)
+                  locationArea.innerHTML = cityName + ', ';
+                else
+                  locationArea.innerHTML = storedCityName + ', ' + cityName;
             })
         }
     )
 }
 
 let fetchWeather = (latitude, longitude) => {
-    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
 
+    const apiKey = "4d8fb5b93d4af21d66a2948710284366";
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     fetch(url)
     .then(
         response => {
         weatherArea.style.display = 'block';
-        // footer.style.display = 'flex';
             if (response.status !== 200) {
                 console.log('Looks like there was a problem. Status Code: ' + response.status);
                 return;
@@ -303,7 +346,7 @@ let getCityPopup = () => {
         metaTheme.setAttribute('content', '#fc466b');
     }
     else{
-        getCityName(storedLatitude, storedLongitude);
+        setCityName(storedLatitude, storedLongitude);
         fetchWeather(storedLatitude, storedLongitude);
     }
 }
@@ -314,9 +357,9 @@ let startApp = () => {
             const latitude  = position.coords.latitude;
             const longitude = position.coords.longitude;
             
-            getCityName(latitude, longitude);
+            localStorage.clear();
+            setCityName(latitude, longitude);
             fetchWeather(latitude, longitude);
-    
         }, () => {
             getCityPopup();
         })
@@ -343,12 +386,12 @@ form.addEventListener("submit", e => {
                 let longitude = data[0].lon;
                 localStorage.setItem('latitude', latitude);
                 localStorage.setItem('longitude', longitude);
+                localStorage.setItem('cityName', city);
 
                 welcomeScreen.style.display = 'none';
-                getCityName(latitude, longitude);
+                setCityName(latitude, longitude);
                 fetchWeather(latitude, longitude);
             })
         }
     )
 })
-
