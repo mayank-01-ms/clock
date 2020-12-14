@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,16 +11,16 @@
     <meta name="og:image" content="https://mayank-01-ms.github.io/clock/images/weather.png" />
     <meta property="og:type" content="web application" />
     <meta property="og:url" content="https://mayank-01-ms.github.io/clock/weather">
-    <meta name="og:site_name" content="Mayank Singh" />
+    <meta name="og:site_name" content="Weather app" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/weather.css">
     <link rel="shortcut icon" href="images/weather.png" type="image/png">
     <link rel="manifest" href="app.webmanifest">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Weather">
     <title>Weather</title>
 </head>
 
@@ -36,7 +35,7 @@
                 </h4>
                 <p>No location access. 
                 <br/>Please Enter your city to continue.</p>
-                <form action="">
+                <form action="" autocomplete="off">
                     <input type="text" placeholder="Enter your city" id="city">
                 </form>
                 <div id="err-c-msg"></div>
@@ -62,28 +61,70 @@
                         <div class="fc-date">Today</div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img id="fc-fimg">
+                                <img id="fc-firstimg">
                             </div>
-                            <div class="fc-minmax" id="fc-fday">27 / 12</div>
+                            <div class="fc-minmax" id="fc-firstday"></div>
                         </div>
                     </div>
                     <div class="fc-day">
                         <div class="fc-date">Tomorrow</div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img id="fc-simg">
+                                <img id="fc-secondimg">
                             </div>
-                            <div class="fc-minmax" id="fc-sday">28 / 16</div>
+                            <div class="fc-minmax" id="fc-secondday"></div>
                         </div>
                     </div>
                     <div class="fc-day">
                         <div class="fc-date" id="third-day-date"></div>
                         <div class="fc-weather">
                             <div class="fc-icon">
-                                <img id="fc-timg">
+                                <img id="fc-thirdimg">
                             </div>
-                            <div class="fc-minmax" id="dc-tday">26 / 14</div>
+                            <div class="fc-minmax" id="fc-thirdday"></div>
                         </div>
+                    </div>
+                    <div class="hidden-fc" style="display: none;">
+                        <div class="fc-day">
+                            <div class="fc-date" id="fourth-day-date"></div>
+                            <div class="fc-weather">
+                                <div class="fc-icon">
+                                    <img id="fc-fourthimg">
+                                </div>
+                                <div class="fc-minmax" id="fc-fourthday"></div>
+                            </div>
+                        </div>
+                        <div class="fc-day">
+                            <div class="fc-date" id="fifth-day-date"></div>
+                            <div class="fc-weather">
+                                <div class="fc-icon">
+                                    <img id="fc-fifthimg">
+                                </div>
+                                <div class="fc-minmax" id="fc-fifthday"></div>
+                            </div>
+                        </div>
+                        <div class="fc-day">
+                            <div class="fc-date" id="sixth-day-date"></div>
+                            <div class="fc-weather">
+                                <div class="fc-icon">
+                                    <img id="fc-sixthimg">
+                                </div>
+                                <div class="fc-minmax" id="fc-sixthday"></div>
+                            </div>
+                        </div>
+                        <div class="fc-day">
+                            <div class="fc-date" id="seventh-day-date"></div>
+                            <div class="fc-weather">
+                                <div class="fc-icon">
+                                    <img id="fc-seventhimg">
+                                </div>
+                                <div class="fc-minmax" id="fc-seventhday"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="expand-fc">
+                        Show 4 more rows
                     </div>
                 </div>
                 <div class="current-details">
@@ -179,37 +220,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="hjkll" style="height: 0px;"></div>
             </section>
         </section>
-        <footer>
-            <nav>
-                <ul>
-                    <li class="active">
-                        <div class="icon">
-                            <a href="index.html">
-                                <img src="images/clock.png" alt="">
-                            </a>
-                        </div>
-                        <h5>Clock</h5>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <img src="images/weather.png" alt="">
-                        </div>
-                        <h5>Weather</h5>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="settings.html">
-                                <img src="images/settings.png" alt="">
-                            </a>
-                        </div>
-                        <h5>Settings</h5>
-                    </li>
-                </ul>
-            </nav>
-        </footer>
     </div>
 </body>
 <script src="js/weather.js"></script>
