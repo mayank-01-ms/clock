@@ -1,6 +1,3 @@
-$nav-width: 70px;
-$icon-width: 35px;
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
 *{
     margin: 0;
@@ -8,6 +5,7 @@ $icon-width: 35px;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
 
     &::after,
     &::before{
@@ -132,37 +130,18 @@ $icon-width: 35px;
     footer{
         position: fixed;
         bottom: 5vw;
-        nav{
-            ul{
-                width: calc(100vw - 20px);
-                margin: 0 10px;
-                background: var(--foreground);
-                border-radius: 15px;
-                box-shadow: 0px 6px 18px var(--bshadow);
-                display: flex;
-                justify-content: space-between;
-                li{
-                    list-style: none;
-                    width: 100%;
-                    margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
 
-                    .icon{
-                        display: flex;
-                        justify-content: center; 
-                        margin: 5px 0;                       
-                        img{
-                            height: $icon-width;
-                            width: $icon-width;
-                        }
-                    }
-                    h5{
-                        text-transform: uppercase;
-                        font-weight: 400;
-                        text-align: center;
-                        font-size: 0.7rem;
-                    }
-                }
-            }
+        a{
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        img{
+            width: 35px;
         }
     }    
 }
@@ -200,6 +179,26 @@ $icon-width: 35px;
     transition: 0.75s ease-out;
 
     header{
+        .back-icon{
+            position: relative;
+
+            &::before,
+            &::after{
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 1rem;
+                height: 10px;
+                width: 2px;
+                background: var(--textH);
+                transform: rotate(45deg);
+                transform-origin: bottom;
+            }
+            &::after{
+                top: 1px;
+                transform: rotate(135deg);
+            }
+        }
         text-align: center;
         padding: 1rem 0;
     }
@@ -241,140 +240,6 @@ $icon-width: 35px;
                 }
                 input:checked + .toggle::after{
                     @include toggleC;
-                }
-            }
-        }
-    }
-}
-
-#background{
-    min-height: 100vh;
-    width: 100vw;
-    position: relative;
-}
-
-#weather{
-    .location{
-        color: var(--textM);
-    }
-
-    .weather-card,
-    .future-forecast,
-    .current-details{
-        background: var(--foreground);
-        background: transparent;
-        border-radius: 15px;
-        padding: 0 1rem;
-        margin: 1rem 0.5rem;
-    }
-    .future-forecast,
-    .current-details{
-        position: relative;
-        backdrop-filter: blur(40px);
-        background-color: rgba($color: #fff, $alpha: 0.15);
-        border: 1px solid rgba($color: #fff, $alpha: 0.09);
-    }
-
-    .weather-card{
-        background: transparent;
-        margin-top: -1rem;
-        padding-top: 1rem;
-        display: flex;
-        justify-content: space-between;
-
-        .weather-status{
-            .curr-stats{
-                font-size: 4.5rem;
-                font-weight: 100;
-                position: relative;
-                left: -0.5rem;
-            }
-            #status{
-                color: var(--textM);
-            }
-        }
-    }
-    .future-forecast{
-        margin-top: 150px;
-        .fc-day{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0.5rem;
-
-            &:not(:last-child){
-                border-bottom: 1px solid var(--wborder);
-            }
-            .fc-weather{
-                display: flex;
-                .fc-icon{
-                    margin-right: 1rem;
-                    width: 1.5rem;
-
-                    img{
-                        max-width: 100%;
-                    }
-                }
-            }
-        }
-        .expand-fc{
-            cursor: pointer;
-            padding: 1rem 0;
-            text-align: center;
-            font-size: 0.9rem;
-            z-index: 10;
-        }
-    }
-
-    .current-details{
-        h4{
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--wborder);
-            font-weight: 600;
-        }
-        .d-row{
-            width: 100%;
-            display: flex;
-
-            &:not(:last-child){
-                border-bottom: 1px solid var(--wborder);
-            }
-
-            .o-detail{
-                width: 100%;
-                padding: 1rem 0.5rem;
-                display: flex;
-                justify-content: space-between;
-                
-                &:first-child{
-                    border-right: 1px solid var(--wborder);
-                }
-
-                .d-info{
-                    p{
-                        &:first-child{
-                            color: var(--textM);
-                            font-size: 0.85rem;
-                        }
-                        &:nth-child(2){
-                            font-size: 0.9rem;
-                        }
-                    }
-                    .wind-speed-logo{
-                        display: inline-block;
-                        width: 0.7rem;
-                        img{
-                            max-width: 100%;
-                        }
-                    }
-                }
-                .d-icon{
-                    width: 1.8rem;
-                    margin-top: 0.5rem;
-
-                    img{
-                        max-width: 100%;
-                    }
                 }
             }
         }
