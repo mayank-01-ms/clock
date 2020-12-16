@@ -12,6 +12,7 @@
 <body>
     <div class="wrapper settings">
         <header>
+            <div class="back-icon"></div>
             <h3>Settings</h3>
         </header>
         <div class="settings-content">
@@ -35,37 +36,7 @@
                     <label for="timeToggle" class="toggle"></label>
                 </div>
             </div>
-        </div>        
-        <footer>
-            <nav>
-                <ul>
-                    <li class="active">
-                        <div class="icon">
-                            <a href="index.html">
-                                <img src="images/clock.png" alt="">
-                            </a>
-                        </div>
-                        <h5>Clock</h5>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="weather.html">
-                                <img src="images/weather.png" alt="">
-                            </a>
-                        </div>
-                        <h5>Weather</h5>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <a href="settings.html">
-                                <img src="images/settings.png" alt="">
-                            </a>
-                        </div>
-                        <h5>Settings</h5>
-                    </li>
-                </ul>
-            </nav>
-        </footer>
+        </div> 
     </div>
 </body>
 <script src="js/theme.js"></script>
@@ -99,6 +70,11 @@
     });
     if (timeFormat == "twentyFour")
         tfToggle.checked = true;
+
+    const backIcon = document.querySelector('.back-icon');
+    backIcon.addEventListener("click", ()=> {
+        window.location.assign("./")
+;    })
     
 </script>
 </html>
