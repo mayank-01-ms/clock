@@ -1,5 +1,7 @@
 Clock app built using Vanilla JavaScript.
 
 Features:-
-1) Has both light and dark theme
-2) Toggle for 24 Hour time format
+➤ Has both light and dark theme
+➤ Toggle for 24 Hour time format
+
+Project URL:- https://mayank-01-ms.github.io/clock
